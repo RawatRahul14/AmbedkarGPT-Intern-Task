@@ -1,7 +1,5 @@
 # AmbedkarGPT-Intern-Task
 
-# AmbedkarGPT-Intern-Task
-
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)]()
 [![LangChain](https://img.shields.io/badge/LangChain-RAG%20Pipeline-green)]()
 [![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-orange)]()
