@@ -130,5 +130,22 @@ The final response is printed in the terminal.
 
 ## Project Structure
 ```bash
-
+Directory structure:
+└── rawatrahul14-ambedkargpt-intern-task/
+    ├── README.md
+    ├── LICENSE
+    ├── main.py
+    ├── Modelfile
+    ├── requirements.txt
+    ├── trials.ipynb
+    ├── components/
+    │   ├── __init__.py
+    │   ├── data_extract.py
+    │   └── vectorstore.py
+    ├── data/
+    │   └── speech.txt
+    └── pipelines/
+        ├── __init__.py
+        ├── rag_pipeline.py
+        └── retriever_pipeline.py
 ```
