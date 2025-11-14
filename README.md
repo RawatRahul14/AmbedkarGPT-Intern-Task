@@ -23,6 +23,10 @@ The goal of this assignment is to demonstrate understanding of:
 ## Table of Contents
 1. [Model Setup (Ollama + Mistral 7B)](#model-setup-ollama--mistral-7b)
 2. [Installation](#installation)
+3. [Custom Model Setup](#custom-model-setup)
+4. [Usage](#usage)
+5. [How It Works](#how-it-works)
+6. 
 
 ## Model Setup (Ollama + Mistral 7B)
 This project uses a fully local LLM through **Ollama**.  
@@ -77,4 +81,54 @@ source .venv/bin/activate
 Make sure your virtual environment is active, then run:
 ```bash
 pip install -r requirements.txt
+```
+
+## Custom Model Setup
+This project also supports creating a custom Ollama model called `ambedkargpt`, built on top of Mistral 7B, fine-tuned via a Modelfile for deterministic, context-bound answers.
+
+### Build the Model Locally
+Run the following command in your project directory:
+
+```bash
+ollama create ambedkargpt -f Modelfile
+```
+
+## Usage
+Once your environment and model are ready, you can run the CLI version of AmbedkarGPT:
+
+```bash
+python main.py
+```
+
+You will see an interactive prompt:
+```text
+=== AmbedkarGPT RAG System ===
+Ask anything based on the speech.txt file.
+Type 'exit' to quit.
+```
+
+### Example Questions:
+- What is the real remedy according to Ambedkar?
+- What is described as the real enemy in the speech?
+- Why does Ambedkar say the caste problem is not a social reform issue?
+- What comparison does Ambedkar make to social reform?
+
+## How It Works
+
+1. Data Extraction:
+The file speech.txt is loaded and split into smaller chunks using LangChain’s CharacterTextSplitter.
+2. Embeddings Creation:
+Each chunk is converted into numerical embeddings using the model sentence-transformers/all-MiniLM-L6-v2.
+3. Vector Store (ChromaDB):
+The embeddings are stored locally in ChromaDB for efficient retrieval.
+4. Retriever:
+When a user asks a question, relevant chunks are retrieved from ChromaDB.
+5. LLM Query (Ollama Mistral):
+The retriever output is passed to the Mistral model (via Ollama) to generate a context-aware answer.
+6. Output:
+The final response is printed in the terminal.
+
+## Project Structure
+```bash
+
 ```
